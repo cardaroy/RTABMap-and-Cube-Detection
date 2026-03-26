@@ -1,0 +1,81 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+  - Class: rviz_common/Views
+    Name: Views
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+      Value: true
+
+    - Class: rtabmap_rviz_plugins/MapCloud
+      Name: MapCloud
+      Enabled: true
+      Value: true
+      Topic:
+        Value: /mapData
+        Depth: 5
+        Durability Policy: Volatile
+        Reliability Policy: Reliable
+      Cloud decimation: 2
+      Cloud max depth (m): 4
+      Cloud min depth (m): 0
+      Cloud voxel size (m): 0.01
+      Download graph: true
+      Download map: true
+      Download namespace: rtabmap
+      Node filtering angle (deg): 30
+      Node filtering radius (m): 0
+      Style: Flat Squares
+      Size (m): 0.01
+      Size (Pixels): 3
+
+    - Class: rviz_default_plugins/PointCloud2
+      Name: LiveCloud
+      Enabled: true
+      Value: true
+      Topic:
+        Value: /odom_local_map
+        Depth: 5
+        Durability Policy: Volatile
+        Reliability Policy: Reliable
+      Size (m): 0.02
+      Style: Flat Squares
+      Color Transformer: RGB8
+
+    - Class: rviz_default_plugins/TF
+      Name: TF
+      Enabled: true
+      Value: true
+
+    - Class: rviz_default_plugins/MarkerArray
+      Name: CubeMarkers
+      Enabled: true
+      Value: true
+      Topic:
+        Value: /perception/cube_map_markers
+        Depth: 5
+        Durability Policy: Volatile
+        Reliability Policy: Reliable
+
+  Global Options:
+    Background Color: 48; 48; 48
+    Fixed Frame: map
+    Frame Rate: 30
+  Value: true
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 5
+      Name: Current View
+      Near Clip Distance: 0.01
+      Pitch: 0.5
+      Target Frame: <Fixed Frame>
+      Yaw: 0
+      Value: Orbit (rviz_default_plugins)
+Window Geometry:
+  Height: 800
+  Width: 1200

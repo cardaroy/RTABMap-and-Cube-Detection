@@ -1,0 +1,19 @@
+[0.614s] Invoking command in '/home/cardaroy/my_new_ws/build/cube_detection': PYTHONPATH=/home/cardaroy/my_new_ws/build/cube_detection/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cardaroy/my_new_ws/install/cube_detection/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/cardaroy/my_new_ws/build/cube_detection/build --no-deps symlink_data
+[0.792s] running develop
+[0.878s] running egg_info
+[0.879s] writing cube_detection.egg-info/PKG-INFO
+[0.879s] writing dependency_links to cube_detection.egg-info/dependency_links.txt
+[0.879s] writing entry points to cube_detection.egg-info/entry_points.txt
+[0.879s] writing requirements to cube_detection.egg-info/requires.txt
+[0.879s] writing top-level names to cube_detection.egg-info/top_level.txt
+[0.881s] reading manifest file 'cube_detection.egg-info/SOURCES.txt'
+[0.882s] writing manifest file 'cube_detection.egg-info/SOURCES.txt'
+[0.883s] running build_ext
+[0.883s] Creating /home/cardaroy/my_new_ws/install/cube_detection/lib/python3.10/site-packages/cube-detection.egg-link (link to .)
+[0.884s] Installing cube_detector_simple_node script to /home/cardaroy/my_new_ws/install/cube_detection/lib/cube_detection
+[0.884s] Installing cube_detector_standard_node script to /home/cardaroy/my_new_ws/install/cube_detection/lib/cube_detection
+[0.884s] Installing cube_map_marker_node script to /home/cardaroy/my_new_ws/install/cube_detection/lib/cube_detection
+[0.884s] 
+[0.884s] Installed /home/cardaroy/my_new_ws/build/cube_detection
+[0.884s] running symlink_data
+[0.903s] Invoked command in '/home/cardaroy/my_new_ws/build/cube_detection' returned '0': PYTHONPATH=/home/cardaroy/my_new_ws/build/cube_detection/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cardaroy/my_new_ws/install/cube_detection/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/cardaroy/my_new_ws/build/cube_detection/build --no-deps symlink_data

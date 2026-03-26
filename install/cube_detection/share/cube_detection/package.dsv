@@ -1,0 +1,9 @@
+source;share/cube_detection/hook/pythonpath.ps1
+source;share/cube_detection/hook/pythonpath.dsv
+source;share/cube_detection/hook/pythonpath.sh
+source;share/cube_detection/hook/ament_prefix_path.ps1
+source;share/cube_detection/hook/ament_prefix_path.dsv
+source;share/cube_detection/hook/ament_prefix_path.sh
+source;../../build/cube_detection/share/cube_detection/hook/pythonpath_develop.ps1
+source;../../build/cube_detection/share/cube_detection/hook/pythonpath_develop.dsv
+source;../../build/cube_detection/share/cube_detection/hook/pythonpath_develop.sh

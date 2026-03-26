@@ -1,0 +1,27 @@
+[0.396s] Invoking command in '/home/cardaroy/my_new_ws/src/cube_detection': PYTHONPATH=/home/cardaroy/my_new_ws/build/cube_detection/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cardaroy/my_new_ws/install/cube_detection/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/cube_detection build --build-base /home/cardaroy/my_new_ws/build/cube_detection/build install --record /home/cardaroy/my_new_ws/build/cube_detection/install.log --single-version-externally-managed install_data
+[0.552s] running egg_info
+[0.554s] writing ../../build/cube_detection/cube_detection.egg-info/PKG-INFO
+[0.554s] writing dependency_links to ../../build/cube_detection/cube_detection.egg-info/dependency_links.txt
+[0.554s] writing entry points to ../../build/cube_detection/cube_detection.egg-info/entry_points.txt
+[0.554s] writing requirements to ../../build/cube_detection/cube_detection.egg-info/requires.txt
+[0.554s] writing top-level names to ../../build/cube_detection/cube_detection.egg-info/top_level.txt
+[0.555s] reading manifest file '../../build/cube_detection/cube_detection.egg-info/SOURCES.txt'
+[0.556s] writing manifest file '../../build/cube_detection/cube_detection.egg-info/SOURCES.txt'
+[0.556s] running build
+[0.556s] running build_py
+[0.556s] copying cube_detection/cube_map_marker_node.py -> /home/cardaroy/my_new_ws/build/cube_detection/build/lib/cube_detection
+[0.556s] running install
+[0.557s] running install_lib
+[0.557s] copying /home/cardaroy/my_new_ws/build/cube_detection/build/lib/cube_detection/cube_map_marker_node.py -> /home/cardaroy/my_new_ws/install/cube_detection/lib/python3.10/site-packages/cube_detection
+[0.558s] byte-compiling /home/cardaroy/my_new_ws/install/cube_detection/lib/python3.10/site-packages/cube_detection/cube_map_marker_node.py to cube_map_marker_node.cpython-310.pyc
+[0.559s] running install_data
+[0.559s] copying package.xml -> /home/cardaroy/my_new_ws/install/cube_detection/share/cube_detection
+[0.559s] running install_egg_info
+[0.560s] removing '/home/cardaroy/my_new_ws/install/cube_detection/lib/python3.10/site-packages/cube_detection-0.0.1-py3.10.egg-info' (and everything under it)
+[0.560s] Copying ../../build/cube_detection/cube_detection.egg-info to /home/cardaroy/my_new_ws/install/cube_detection/lib/python3.10/site-packages/cube_detection-0.0.1-py3.10.egg-info
+[0.560s] running install_scripts
+[0.573s] Installing cube_detector_simple_node script to /home/cardaroy/my_new_ws/install/cube_detection/lib/cube_detection
+[0.573s] Installing cube_detector_standard_node script to /home/cardaroy/my_new_ws/install/cube_detection/lib/cube_detection
+[0.573s] Installing cube_map_marker_node script to /home/cardaroy/my_new_ws/install/cube_detection/lib/cube_detection
+[0.573s] writing list of installed files to '/home/cardaroy/my_new_ws/build/cube_detection/install.log'
+[0.591s] Invoked command in '/home/cardaroy/my_new_ws/src/cube_detection' returned '0': PYTHONPATH=/home/cardaroy/my_new_ws/build/cube_detection/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cardaroy/my_new_ws/install/cube_detection/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/cube_detection build --build-base /home/cardaroy/my_new_ws/build/cube_detection/build install --record /home/cardaroy/my_new_ws/build/cube_detection/install.log --single-version-externally-managed install_data

@@ -1,0 +1,29 @@
+[0.361s] Invoking command in '/home/cardaroy/my_new_ws/src/cube_detection': PYTHONPATH=/home/cardaroy/my_new_ws/build/cube_detection/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cardaroy/my_new_ws/install/cube_detection/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/cube_detection build --build-base /home/cardaroy/my_new_ws/build/cube_detection/build install --record /home/cardaroy/my_new_ws/build/cube_detection/install.log --single-version-externally-managed install_data
+[0.489s] running egg_info
+[0.490s] writing ../../build/cube_detection/cube_detection.egg-info/PKG-INFO
+[0.490s] writing dependency_links to ../../build/cube_detection/cube_detection.egg-info/dependency_links.txt
+[0.491s] writing entry points to ../../build/cube_detection/cube_detection.egg-info/entry_points.txt
+[0.491s] writing requirements to ../../build/cube_detection/cube_detection.egg-info/requires.txt
+[0.491s] writing top-level names to ../../build/cube_detection/cube_detection.egg-info/top_level.txt
+[0.492s] reading manifest file '../../build/cube_detection/cube_detection.egg-info/SOURCES.txt'
+[0.492s] writing manifest file '../../build/cube_detection/cube_detection.egg-info/SOURCES.txt'
+[0.492s] running build
+[0.493s] running build_py
+[0.493s] copying cube_detection/cube_detector_standard_node.py -> /home/cardaroy/my_new_ws/build/cube_detection/build/lib/cube_detection
+[0.493s] copying cube_detection/cube_detector_simple_node.py -> /home/cardaroy/my_new_ws/build/cube_detection/build/lib/cube_detection
+[0.493s] running install
+[0.493s] running install_lib
+[0.494s] copying /home/cardaroy/my_new_ws/build/cube_detection/build/lib/cube_detection/cube_detector_standard_node.py -> /home/cardaroy/my_new_ws/install/cube_detection/lib/python3.10/site-packages/cube_detection
+[0.494s] copying /home/cardaroy/my_new_ws/build/cube_detection/build/lib/cube_detection/cube_detector_simple_node.py -> /home/cardaroy/my_new_ws/install/cube_detection/lib/python3.10/site-packages/cube_detection
+[0.494s] byte-compiling /home/cardaroy/my_new_ws/install/cube_detection/lib/python3.10/site-packages/cube_detection/cube_detector_standard_node.py to cube_detector_standard_node.cpython-310.pyc
+[0.496s] byte-compiling /home/cardaroy/my_new_ws/install/cube_detection/lib/python3.10/site-packages/cube_detection/cube_detector_simple_node.py to cube_detector_simple_node.cpython-310.pyc
+[0.497s] running install_data
+[0.497s] running install_egg_info
+[0.498s] removing '/home/cardaroy/my_new_ws/install/cube_detection/lib/python3.10/site-packages/cube_detection-0.0.1-py3.10.egg-info' (and everything under it)
+[0.498s] Copying ../../build/cube_detection/cube_detection.egg-info to /home/cardaroy/my_new_ws/install/cube_detection/lib/python3.10/site-packages/cube_detection-0.0.1-py3.10.egg-info
+[0.499s] running install_scripts
+[0.512s] Installing cube_detector_simple_node script to /home/cardaroy/my_new_ws/install/cube_detection/lib/cube_detection
+[0.512s] Installing cube_detector_standard_node script to /home/cardaroy/my_new_ws/install/cube_detection/lib/cube_detection
+[0.512s] Installing cube_map_marker_node script to /home/cardaroy/my_new_ws/install/cube_detection/lib/cube_detection
+[0.512s] writing list of installed files to '/home/cardaroy/my_new_ws/build/cube_detection/install.log'
+[0.529s] Invoked command in '/home/cardaroy/my_new_ws/src/cube_detection' returned '0': PYTHONPATH=/home/cardaroy/my_new_ws/build/cube_detection/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cardaroy/my_new_ws/install/cube_detection/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/cube_detection build --build-base /home/cardaroy/my_new_ws/build/cube_detection/build install --record /home/cardaroy/my_new_ws/build/cube_detection/install.log --single-version-externally-managed install_data

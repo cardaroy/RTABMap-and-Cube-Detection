@@ -1,0 +1,22 @@
+[0.394s] Invoking command in '/home/cardaroy/my_new_ws/build/cube_detection': PYTHONPATH=/home/cardaroy/my_new_ws/build/cube_detection/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cardaroy/my_new_ws/install/cube_detection/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/cardaroy/my_new_ws/build/cube_detection/build --no-deps symlink_data --force
+[0.558s] running develop
+[0.648s] running egg_info
+[0.648s] writing cube_detection.egg-info/PKG-INFO
+[0.649s] writing dependency_links to cube_detection.egg-info/dependency_links.txt
+[0.649s] writing entry points to cube_detection.egg-info/entry_points.txt
+[0.649s] writing requirements to cube_detection.egg-info/requires.txt
+[0.649s] writing top-level names to cube_detection.egg-info/top_level.txt
+[0.651s] reading manifest file 'cube_detection.egg-info/SOURCES.txt'
+[0.651s] writing manifest file 'cube_detection.egg-info/SOURCES.txt'
+[0.652s] running build_ext
+[0.652s] Creating /home/cardaroy/my_new_ws/install/cube_detection/lib/python3.10/site-packages/cube-detection.egg-link (link to .)
+[0.653s] Installing cube_detector_simple_node script to /home/cardaroy/my_new_ws/install/cube_detection/lib/cube_detection
+[0.653s] Installing cube_detector_standard_node script to /home/cardaroy/my_new_ws/install/cube_detection/lib/cube_detection
+[0.653s] Installing cube_map_marker_node script to /home/cardaroy/my_new_ws/install/cube_detection/lib/cube_detection
+[0.653s] 
+[0.653s] Installed /home/cardaroy/my_new_ws/build/cube_detection
+[0.653s] running symlink_data
+[0.654s] symbolically linking /home/cardaroy/my_new_ws/build/cube_detection/resource/cube_detection -> /home/cardaroy/my_new_ws/install/cube_detection/share/ament_index/resource_index/packages
+[0.654s] symbolically linking /home/cardaroy/my_new_ws/build/cube_detection/package.xml -> /home/cardaroy/my_new_ws/install/cube_detection/share/cube_detection
+[0.654s] symbolically linking /home/cardaroy/my_new_ws/build/cube_detection/launch/cube_detection.launch.py -> /home/cardaroy/my_new_ws/install/cube_detection/share/cube_detection/launch
+[0.669s] Invoked command in '/home/cardaroy/my_new_ws/build/cube_detection' returned '0': PYTHONPATH=/home/cardaroy/my_new_ws/build/cube_detection/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/cardaroy/my_new_ws/install/cube_detection/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/cardaroy/my_new_ws/build/cube_detection/build --no-deps symlink_data --force
