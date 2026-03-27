@@ -1,0 +1,17 @@
+running develop
+running egg_info
+writing cube_detection.egg-info/PKG-INFO
+writing dependency_links to cube_detection.egg-info/dependency_links.txt
+writing entry points to cube_detection.egg-info/entry_points.txt
+writing requirements to cube_detection.egg-info/requires.txt
+writing top-level names to cube_detection.egg-info/top_level.txt
+reading manifest file 'cube_detection.egg-info/SOURCES.txt'
+writing manifest file 'cube_detection.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/cardaroy/my_new_ws/install/cube_detection/lib/python3.10/site-packages/cube-detection.egg-link (link to .)
+Installing cube_detector_simple_node script to /home/cardaroy/my_new_ws/install/cube_detection/lib/cube_detection
+Installing cube_detector_standard_node script to /home/cardaroy/my_new_ws/install/cube_detection/lib/cube_detection
+Installing cube_map_marker_node script to /home/cardaroy/my_new_ws/install/cube_detection/lib/cube_detection
+
+Installed /home/cardaroy/my_new_ws/build/cube_detection
+running symlink_data
