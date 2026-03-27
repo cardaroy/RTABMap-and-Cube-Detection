@@ -31,9 +31,9 @@ class CubeDetectorSimpleNode(Node):
         self.declare_parameter("frame_id", "camera_color_optical_frame")
         self.declare_parameter("publish_rate_hz", 15.0)
 
-        self.declare_parameter("color_topic", "/camera/color/image_raw")
-        self.declare_parameter("depth_topic", "/camera/depth/image_rect_raw")
-        self.declare_parameter("camera_info_topic", "/camera/color/camera_info")
+        self.declare_parameter("color_topic", "/camera/camera/color/image_raw")
+        self.declare_parameter("depth_topic", "/camera/camera/depth/image_rect_raw")
+        self.declare_parameter("camera_info_topic", "/camera/camera/color/camera_info")
         self.declare_parameter("depth_unit", "mm")   # "mm" or "m"
         self.declare_parameter("depth_roi_px", 9)    # odd number recommended
 

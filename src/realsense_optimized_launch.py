@@ -46,7 +46,6 @@ def generate_launch_description():
                              'launch', 'rs_launch.py')
             ]),
             launch_arguments={
-                'camera_namespace': '',
                 # Streams
                 'enable_color': 'true',
                 'enable_depth': 'true',

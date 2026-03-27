@@ -68,9 +68,9 @@ def generate_launch_description():
 
     remappings = [
         # ('imu', '/imu/data'),  # uncomment for D435i with IMU
-        ('rgb/image', '/camera/color/image_raw'),
-        ('rgb/camera_info', '/camera/color/camera_info'),
-        ('depth/image', '/camera/aligned_depth_to_color/image_raw'),
+        ('rgb/image', '/camera/camera/color/image_raw'),
+        ('rgb/camera_info', '/camera/camera/color/camera_info'),
+        ('depth/image', '/camera/camera/aligned_depth_to_color/image_raw'),
     ]
 
     return LaunchDescription([
@@ -121,6 +121,6 @@ def generate_launch_description():
             output='screen',
             arguments=['-d', '/home/cardaroy/my_new_ws/src/rtabmap_rviz.rviz'],
             condition=IfCondition(LaunchConfiguration('rviz')),
-        ), 
+        ),
     ])
     

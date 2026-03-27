@@ -69,11 +69,12 @@ source /opt/ros/humble/setup.bash
 ros2 launch realsense2_camera rs_launch.py
 ```
 
-With depth, color, and pointcloud enabled:
+Equivalent command to realsense_optimized_launch.py
 
 ```bash
+
+
 ros2 launch realsense2_camera rs_launch.py \
-  camera_namespace:="" \
   enable_color:=true \
   enable_depth:=true \
   enable_infra1:=false \
