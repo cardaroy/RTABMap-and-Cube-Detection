@@ -31,10 +31,8 @@ def generate_launch_description():
                               description='RGB profile: WxHxFPS'),
         DeclareLaunchArgument('depth_resolution', default_value='424x240x30',
                               description='Depth profile: WxHxFPS'),
-        # DeclareLaunchArgument('unite_imu_method', default_value='2',
-        #                       description='0=None, 1=copy, 2=linear_interpolation'),
-        # DeclareLaunchArgument('enable_imu', default_value='true',
-        #                       description='Enable gyro + accel'),
+        DeclareLaunchArgument('unite_imu_method', default_value='2',
+                              description='0=None, 1=copy, 2=linear_interpolation'),
 
         # IR emitter on for better depth
         SetParameter(name='depth_module.emitter_enabled', value=1),
@@ -51,16 +49,16 @@ def generate_launch_description():
                 'enable_depth': 'true',
                 'enable_infra1': 'false',
                 'enable_infra2': 'false',
-                'enable_gyro': 'false',
-                'enable_accel': 'false',
+                'enable_gyro': 'true',
+                'enable_accel': 'true',
                 # Resolution / FPS
                 'rgb_camera.color_profile': LaunchConfiguration('rgb_resolution'),
                 'depth_module.depth_profile': LaunchConfiguration('depth_resolution'),
                 # Sync & alignment
                 'enable_sync': 'true',
                 'align_depth.enable': 'true',
-                # IMU (disabled — no IMU on WSL2)
-                # 'unite_imu_method': LaunchConfiguration('unite_imu_method'),
+                # IMU
+                'unite_imu_method': LaunchConfiguration('unite_imu_method'),
                 # Filters — clean up noisy depth
                 'decimation_filter.enable': 'true',
                 'spatial_filter.enable': 'true',
@@ -75,16 +73,16 @@ def generate_launch_description():
             }.items(),
         ),
 
-        # --- IMU filter (uncomment if using D435i with IMU) ---
-        # Node(
-        #     package='imu_filter_madgwick',
-        #     executable='imu_filter_madgwick_node',
-        #     output='screen',
-        #     parameters=[{
-        #         'use_mag': False,
-        #         'world_frame': 'enu',
-        #         'publish_tf': False,
-        #     }],
-        #     remappings=[('imu/data_raw', '/camera/imu')],
-        # ),
+        # --- IMU filter (Madgwick) ---
+        Node(
+            package='imu_filter_madgwick',
+            executable='imu_filter_madgwick_node',
+            output='screen',
+            parameters=[{
+                'use_mag': False,
+                'world_frame': 'enu',
+                'publish_tf': False,
+            }],
+            remappings=[('imu/data_raw', '/camera/camera/imu')],
+        ),
     ])

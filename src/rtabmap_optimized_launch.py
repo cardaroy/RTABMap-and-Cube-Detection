@@ -29,7 +29,7 @@ def generate_launch_description():
         'subscribe_depth': True,
         'subscribe_odom_info': True,
         'approx_sync': False,
-        # 'wait_imu_to_init': True,  # uncomment for D435i with IMU
+        'wait_imu_to_init': True,
 
         # --- Memory / speed ---
         'Mem/STMSize': '10',              # Short-term memory size (default 10, keep low)
@@ -67,7 +67,7 @@ def generate_launch_description():
     }]
 
     remappings = [
-        # ('imu', '/imu/data'),  # uncomment for D435i with IMU
+        ('imu', '/imu/data'),
         ('rgb/image', '/camera/camera/color/image_raw'),
         ('rgb/camera_info', '/camera/camera/color/camera_info'),
         ('depth/image', '/camera/camera/aligned_depth_to_color/image_raw'),
