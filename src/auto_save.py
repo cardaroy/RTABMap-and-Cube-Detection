@@ -37,8 +37,9 @@ class AutoSaver(Node):
         self.latest_cloud = None
         self.latest_markers = None
 
+
         self.sub_cloud = self.create_subscription(
-            PointCloud2, '/rtabmap/cloud_map', self._cloud_cb, 1)
+            PointCloud2, '/cloud_map', self._cloud_cb, 1)
         self.sub_markers = self.create_subscription(
             MarkerArray, '/perception/cube_map_markers', self._markers_cb, 10)
 

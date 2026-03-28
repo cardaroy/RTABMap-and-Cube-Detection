@@ -152,6 +152,9 @@ class CubeDetectorStandardNode(Node):
             return "white"
         if mean_s < 40:
             return "gray"
+        # Brown: low-mid value, moderate saturation, orange-red hue
+        if mean_h < 25 and mean_s > 40 and mean_v < 130:
+            return "brown"
         if mean_h < 10 or mean_h > 170:
             return "red"
         if mean_h < 25:
@@ -220,9 +223,13 @@ class CubeDetectorStandardNode(Node):
                     "xyz_m": [round(float(X), 4), round(float(Y), 4), round(float(Z), 4)],
                 })
 
+                # Classify color and skip brown/black
+                color_name = self._classify_color(self._color_bgr, x1, y1, x2, y2)
+                if color_name in ("black", "brown"):
+                    continue
+
                 # Draw on debug frame
                 if debug_frame is not None:
-                    color_name = self._classify_color(self._color_bgr, x1, y1, x2, y2)
                     cv2.rectangle(debug_frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
                     label = f"{cls_name} {conf:.2f} Z={Z:.2f}m [{color_name}]"
                     (tw, th), _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.55, 2)
