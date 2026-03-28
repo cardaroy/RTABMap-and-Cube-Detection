@@ -53,16 +53,16 @@ ros2 launch src/rtabmap_optimized_launch.py \
   frame_id:=camera_link \
   subscribe_depth:=true \
   approx_sync:=false \
-  rgb_topic:=/camera/color/image_raw \
-  depth_topic:=/camera/aligned_depth_to_color/image_raw \
-  camera_info_topic:=/camera/color/camera_info 
+  rgb_topic:=/camera/camera/color/image_raw \
+  depth_topic:=/camera/camera/aligned_depth_to_color/image_raw \
+  camera_info_topic:=/camera/camera/color/camera_info 
 ```
-### Option C: View in rviz2 (separate window)
+### Option C: View in rviz2 (separate wind`ow)
 
 ```bash
 rviz2
 # Add displays: Image, PointCloud2, Map, TF
-# Topics: /rtabmap/cloud_map, /rtabmap/grid_map, /camera/camera/color/image_raw
+# Topics: /rtabmap/cloud_map, /rtabmap/grid_map, /camera/color/image_raw
 ```
 
 ## 3. Useful RTAB-Map Topics

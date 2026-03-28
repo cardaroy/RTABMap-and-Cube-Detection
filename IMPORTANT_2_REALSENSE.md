@@ -14,8 +14,9 @@ ros2 launch realsense2_camera rs_launch.py \
   enable_depth:=true \
   enable_infra1:=false \
   enable_infra2:=false \
-  enable_gyro:=false \
-  enable_accel:=false \
+  enable_gyro:=true \
+  enable_accel:=true \
+  unite_imu_method:=2 \
   rgb_camera.color_profile:=424x240x30 \
   depth_module.depth_profile:=424x240x30 \
   depth_module.emitter_enabled:=1 \
@@ -28,5 +29,11 @@ ros2 launch realsense2_camera rs_launch.py \
   pointcloud.enable:=false \
   publish_tf:=true \
   clip_distance:=4.0
+
+then also run (on jetson or workstation, wherever topics are visible):
+
+ros2 run imu_filter_madgwick imu_filter_madgwick_node --ros-args \
+  -p use_mag:=false -p world_frame:=enu -p publish_tf:=false \
+  --remap imu/data_raw:=/camera/camera/imu
 
   then pray to god that the topics are outputted
