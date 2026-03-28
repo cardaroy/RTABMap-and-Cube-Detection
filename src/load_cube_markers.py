@@ -73,6 +73,34 @@ class MarkerLoader(Node):
             t.text = f"Cube #{m.id} [{color_label}]\n({c['x']:.2f}, {c['y']:.2f}, {c['z']:.2f})"
             ma.markers.append(t)
 
+        # Origin marker — rover start position
+        origin = Marker()
+        origin.header.stamp = now
+        origin.header.frame_id = 'map'
+        origin.ns = 'origin'
+        origin.id = 0
+        origin.type = Marker.ARROW
+        origin.action = Marker.ADD
+        origin.pose.orientation.w = 1.0
+        origin.scale.x = 0.15
+        origin.scale.y = 0.03
+        origin.scale.z = 0.03
+        origin.color = ColorRGBA(r=0.0, g=1.0, b=1.0, a=1.0)
+        ma.markers.append(origin)
+
+        origin_text = Marker()
+        origin_text.header = origin.header
+        origin_text.ns = 'origin_text'
+        origin_text.id = 0
+        origin_text.type = Marker.TEXT_VIEW_FACING
+        origin_text.action = Marker.ADD
+        origin_text.pose.position.z = 0.15
+        origin_text.pose.orientation.w = 1.0
+        origin_text.scale.z = 0.08
+        origin_text.color = ColorRGBA(r=0.0, g=1.0, b=1.0, a=1.0)
+        origin_text.text = 'START'
+        ma.markers.append(origin_text)
+
         self.pub.publish(ma)
 
 

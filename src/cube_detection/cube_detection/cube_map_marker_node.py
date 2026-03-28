@@ -206,6 +206,37 @@ class CubeMapMarkerNode(Node):
                 t.lifetime = Duration(seconds=self.marker_lifetime).to_msg()
             ma.markers.append(t)
 
+        # Origin marker — rover start position
+        origin = Marker()
+        origin.header.stamp = now
+        origin.header.frame_id = self.target_frame
+        origin.ns = "origin"
+        origin.id = 0
+        origin.type = Marker.ARROW
+        origin.action = Marker.ADD
+        origin.pose.position.x = 0.0
+        origin.pose.position.y = 0.0
+        origin.pose.position.z = 0.0
+        origin.pose.orientation.w = 1.0
+        origin.scale.x = 0.15  # arrow length
+        origin.scale.y = 0.03  # arrow width
+        origin.scale.z = 0.03  # arrow height
+        origin.color = ColorRGBA(r=0.0, g=1.0, b=1.0, a=1.0)  # cyan
+        ma.markers.append(origin)
+
+        origin_text = Marker()
+        origin_text.header = origin.header
+        origin_text.ns = "origin_text"
+        origin_text.id = 0
+        origin_text.type = Marker.TEXT_VIEW_FACING
+        origin_text.action = Marker.ADD
+        origin_text.pose.position.z = 0.15
+        origin_text.pose.orientation.w = 1.0
+        origin_text.scale.z = 0.08
+        origin_text.color = ColorRGBA(r=0.0, g=1.0, b=1.0, a=1.0)
+        origin_text.text = "START"
+        ma.markers.append(origin_text)
+
         self.pub_markers.publish(ma)
 
 
