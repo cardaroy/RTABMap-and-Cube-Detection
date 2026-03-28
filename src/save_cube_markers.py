@@ -26,13 +26,24 @@ class MarkerSaver(Node):
 
     def _cb(self, msg: MarkerArray):
         cubes = []
+        # Collect text labels to pair color names with cube IDs
+        labels = {}
+        for m in msg.markers:
+            if m.type == Marker.TEXT_VIEW_FACING:
+                labels[m.id - 1000] = m.text
         for m in msg.markers:
             if m.type == Marker.CUBE:
+                text = labels.get(m.id, "")
+                # Extract color name from label "[color_name]"
+                color_name = "unknown"
+                if "[" in text and "]" in text:
+                    color_name = text.split("[")[1].split("]")[0]
                 cubes.append({
                     'id': m.id,
                     'x': m.pose.position.x,
                     'y': m.pose.position.y,
                     'z': m.pose.position.z,
+                    'color': color_name,
                     'r': m.color.r,
                     'g': m.color.g,
                     'b': m.color.b,

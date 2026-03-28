@@ -10,8 +10,9 @@ existing marker, it updates that marker instead of creating a duplicate.
 Confirmation: a landmark must be observed `min_observations` times before
 it is published as a confirmed marker. This filters out false positives.
 """
+import json
 import math
-from typing import List
+from typing import List, Optional
 
 import rclpy
 from rclpy.node import Node
@@ -19,27 +20,43 @@ from rclpy.duration import Duration
 
 from geometry_msgs.msg import PoseStamped
 from visualization_msgs.msg import Marker, MarkerArray
-from std_msgs.msg import ColorRGBA
+from std_msgs.msg import ColorRGBA, String
 
 from tf2_ros import Buffer, TransformListener, TransformException
 from tf2_geometry_msgs import do_transform_pose_stamped
 
+# Map color names to RGBA for cube markers
+_COLOR_MAP = {
+    "red":    ColorRGBA(r=1.0, g=0.0, b=0.0, a=0.9),
+    "orange": ColorRGBA(r=1.0, g=0.5, b=0.0, a=0.9),
+    "yellow": ColorRGBA(r=1.0, g=1.0, b=0.0, a=0.9),
+    "green":  ColorRGBA(r=0.0, g=0.8, b=0.0, a=0.9),
+    "blue":   ColorRGBA(r=0.0, g=0.3, b=1.0, a=0.9),
+    "purple": ColorRGBA(r=0.6, g=0.0, b=0.8, a=0.9),
+    "white":  ColorRGBA(r=1.0, g=1.0, b=1.0, a=0.9),
+    "gray":   ColorRGBA(r=0.6, g=0.6, b=0.6, a=0.9),
+}
+_DEFAULT_COLOR = ColorRGBA(r=1.0, g=0.4, b=0.0, a=0.9)
+
 
 class _Landmark:
-    __slots__ = ('x', 'y', 'z', 'obs_count')
+    __slots__ = ('x', 'y', 'z', 'obs_count', 'color_name')
 
-    def __init__(self, x: float, y: float, z: float):
+    def __init__(self, x: float, y: float, z: float, color_name: str = "unknown"):
         self.x = x
         self.y = y
         self.z = z
         self.obs_count = 1
+        self.color_name = color_name
 
-    def merge(self, x: float, y: float, z: float):
+    def merge(self, x: float, y: float, z: float, color_name: str = "unknown"):
         """Running average to refine position, increment observation count."""
         self.x = (self.x + x) / 2.0
         self.y = (self.y + y) / 2.0
         self.z = (self.z + z) / 2.0
         self.obs_count += 1
+        if color_name != "unknown":
+            self.color_name = color_name
 
     def dist_to(self, x: float, y: float, z: float) -> float:
         return math.sqrt((self.x - x) ** 2 + (self.y - y) ** 2 + (self.z - z) ** 2)
@@ -50,7 +67,7 @@ class CubeMapMarkerNode(Node):
         super().__init__("cube_map_marker_node")
 
         self.declare_parameter("target_frame", "map")
-        self.declare_parameter("merge_radius_m", 2)
+        self.declare_parameter("merge_radius_m", 1.0)
         self.declare_parameter("min_observations", 5)
         self.declare_parameter("marker_scale", 0.06)
         self.declare_parameter("marker_lifetime_sec", 0.0)  # 0 = forever
@@ -67,10 +84,14 @@ class CubeMapMarkerNode(Node):
 
         # Stored landmarks (confirmed + candidates)
         self._landmarks: List[_Landmark] = []
+        self._latest_color: str = "unknown"  # color from most recent JSON
 
         # Sub / pub
         self.create_subscription(
             PoseStamped, "/perception/target_pose_cam", self.on_target, 10
+        )
+        self.create_subscription(
+            String, "/perception/cube_detections_json", self._on_json, 10
         )
         self.pub_markers = self.create_publisher(
             MarkerArray, "/perception/cube_map_markers", 10
@@ -81,7 +102,26 @@ class CubeMapMarkerNode(Node):
             f"to confirm a cube in '{self.target_frame}' frame."
         )
 
+    def _on_json(self, msg: String):
+        """Extract best detection color from JSON."""
+        try:
+            data = json.loads(msg.data)
+            best = data.get("best")
+            detections = data.get("detections", [])
+            # Use best detection's color, or first detection with a color
+            if detections:
+                for d in detections:
+                    c = d.get("color", "unknown")
+                    if c != "unknown":
+                        self._latest_color = c
+                        return
+        except (json.JSONDecodeError, TypeError):
+            pass
+
     def on_target(self, msg: PoseStamped):
+        # Grab color from latest JSON detection
+        color_name = self._latest_color
+
         # Transform pose into map frame
         try:
             transform = self.tf_buffer.lookup_transform(
@@ -103,17 +143,17 @@ class CubeMapMarkerNode(Node):
         for lm in self._landmarks:
             if lm.dist_to(x, y, z) < self.merge_radius:
                 was_confirmed = lm.obs_count >= self.min_observations
-                lm.merge(x, y, z)
+                lm.merge(x, y, z, color_name)
                 if not was_confirmed and lm.obs_count >= self.min_observations:
                     self.get_logger().info(
                         f"Cube CONFIRMED at ({lm.x:.2f}, {lm.y:.2f}, {lm.z:.2f}) "
-                        f"after {lm.obs_count} observations"
+                        f"color={lm.color_name} after {lm.obs_count} observations"
                     )
                 merged = True
                 break
 
         if not merged:
-            self._landmarks.append(_Landmark(x, y, z))
+            self._landmarks.append(_Landmark(x, y, z, color_name))
 
         self._publish_all()
 
@@ -143,7 +183,7 @@ class CubeMapMarkerNode(Node):
             m.scale.x = self.marker_scale
             m.scale.y = self.marker_scale
             m.scale.z = self.marker_scale
-            m.color = ColorRGBA(r=1.0, g=0.4, b=0.0, a=0.9)  # orange
+            m.color = _COLOR_MAP.get(lm.color_name, _DEFAULT_COLOR)
             if self.marker_lifetime > 0:
                 m.lifetime = Duration(seconds=self.marker_lifetime).to_msg()
             ma.markers.append(m)
@@ -161,7 +201,7 @@ class CubeMapMarkerNode(Node):
             t.pose.orientation.w = 1.0
             t.scale.z = 0.06
             t.color = ColorRGBA(r=1.0, g=1.0, b=1.0, a=1.0)
-            t.text = f"Cube #{confirmed_idx}\n({lm.x:.2f}, {lm.y:.2f}, {lm.z:.2f})\n[seen {lm.obs_count}x]"
+            t.text = f"Cube #{confirmed_idx} [{lm.color_name}]\n({lm.x:.2f}, {lm.y:.2f}, {lm.z:.2f})\n[seen {lm.obs_count}x]"
             if self.marker_lifetime > 0:
                 t.lifetime = Duration(seconds=self.marker_lifetime).to_msg()
             ma.markers.append(t)

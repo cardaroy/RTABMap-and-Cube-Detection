@@ -69,7 +69,8 @@ class MarkerLoader(Node):
             t.pose.orientation.w = 1.0
             t.scale.z = 0.06
             t.color = ColorRGBA(r=1.0, g=1.0, b=1.0, a=1.0)
-            t.text = f"Cube #{m.id}\n({c['x']:.2f}, {c['y']:.2f}, {c['z']:.2f})"
+            color_label = c.get('color', 'unknown')
+            t.text = f"Cube #{m.id} [{color_label}]\n({c['x']:.2f}, {c['y']:.2f}, {c['z']:.2f})"
             ma.markers.append(t)
 
         self.pub.publish(ma)

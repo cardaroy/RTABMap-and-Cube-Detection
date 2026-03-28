@@ -215,18 +215,19 @@ class CubeDetectorStandardNode(Node):
                 X = (u - self.cx) * Z / self.fx
                 Y = (v - self.cy) * Z / self.fy
 
-                detections.append({
-                    "class": cls_name,
-                    "conf": round(conf, 4),
-                    "bbox_xyxy": [int(x1), int(y1), int(x2), int(y2)],
-                    "uv": [u, v],
-                    "xyz_m": [round(float(X), 4), round(float(Y), 4), round(float(Z), 4)],
-                })
-
                 # Classify color and skip brown/black
                 color_name = self._classify_color(self._color_bgr, x1, y1, x2, y2)
                 if color_name in ("black", "brown"):
                     continue
+
+                detections.append({
+                    "class": cls_name,
+                    "conf": round(conf, 4),
+                    "color": color_name,
+                    "bbox_xyxy": [int(x1), int(y1), int(x2), int(y2)],
+                    "uv": [u, v],
+                    "xyz_m": [round(float(X), 4), round(float(Y), 4), round(float(Z), 4)],
+                })
 
                 # Draw on debug frame
                 if debug_frame is not None:
